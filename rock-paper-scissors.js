@@ -1,15 +1,6 @@
 function getComputerChoice()
 {
-    const choice = Math.floor(Math.random() * 3);
-
-    switch(choice) {
-        case 0:
-            return "rock";
-        case 1:
-            return "paper";
-        case 2: 
-            return "scissors";
-    }
+    return Math.floor(Math.random() * 3);
 }
 
 function getPlayerChoice() {
@@ -20,15 +11,15 @@ function getPlayerChoice() {
         case "rock":
         case "r":
         case "1":
-            return "rock";
+            return 0;
         case "paper":
         case "p":
         case "2":
-            return "paper";
+            return 1;
         case "scissors":
         case "s":
         case "3":
-            return "scissors";
+            return 2;
         default:
             getPlayerChoice()
     }
@@ -68,39 +59,30 @@ function game() {
 
 function playRound(playerChoice, computerChoice)
 {
-    if(playerChoice == computerChoice)
-    {
+    outcome = playerChoice - computerChoice;
+
+    console.log(`Player: ${convertToString(playerChoice)}\nComputer: ${convertToString(computerChoice)}`);
+    console.log(outcome);
+    if(outcome == 0) {
         return 0;
     }
-
-    else if(playerChoice == "scissors") {
-        switch(computerChoice)
-        {
-            case "rock":
-                return -1;
-            case "paper":
-                return 1;
-        }
+    else if(Math.abs(outcome) == 1) {
+        return outcome;
     }
-
-    else if(playerChoice == "paper") {
-        switch(computerChoice)
-        {
-            case "scissors":
-                return -1;
-            case "rock":
-                return 1;
-        }
+    else if(Math.abs(outcome) == 2) {
+        return outcome / -2;
     }
+}
 
-    else if(playerChoice == "rock") {
-        switch(computerChoice)
-        {
-            case "paper":
-                return -1;
-            case "scissors":
-                return 1;
-        }
+function convertToString(index) {
+    switch(index) 
+    {
+        case 0:
+            return "Rock";
+        case 1:
+            return "Paper";
+        case 2: 
+            return "Scissors";
     }
 }
 
