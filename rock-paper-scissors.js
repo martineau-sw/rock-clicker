@@ -6,19 +6,13 @@ function getComputerChoice()
 function getPlayerChoice() {
     const choice = prompt("Rock, paper, or scissors?");
 
-    switch(choice.toLowerCase())
+    switch(choice.toLowerCase().charAt(0))
     {
-        case "rock":
         case "r":
-        case "1":
             return 0;
-        case "paper":
         case "p":
-        case "2":
             return 1;
-        case "scissors":
         case "s":
-        case "3":
             return 2;
         default:
             getPlayerChoice()
