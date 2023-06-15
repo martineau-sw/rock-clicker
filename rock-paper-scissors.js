@@ -38,19 +38,30 @@ let playerScore = 0;
 let computerScore = 0;
 
 function game() {
-    playRound(getPlayerChoice(), getComputerChoice());
+    const outcome = playRound(getPlayerChoice(), getComputerChoice());
+
+    if(outcome == 1) {
+        console.log("Player wins round!");
+        playerScore++;
+    }
+    else if(outcome == 0) {
+        console.log("It's a tie!");
+    }
+    else {
+        console.log("Computer wins round!");
+        computerScore++;
+    }
 
     if(playerScore == 3)
     {
-        console.log("PlAYER WINS");
+        console.log("Player wins game!");
     }
     else if(computerScore == 3)
     {
-        console.log("COMPUTER WINS");
+        console.log("Computer wins game!");
     } 
     else {
-        console.log(`Player: ${playerScore}
-        Computer: ${computerScore}`)
+        console.log(`Player: ${playerScore}\nComputer: ${computerScore}`)
         game();   
     }
 }
@@ -59,20 +70,16 @@ function playRound(playerChoice, computerChoice)
 {
     if(playerChoice == computerChoice)
     {
-        console.log("IT'S A TIE");
+        return 0;
     }
 
     else if(playerChoice == "scissors") {
         switch(computerChoice)
         {
             case "rock":
-                console.log("COMPUTER WINS");
-                computerScore++;
-                break;
+                return -1;
             case "paper":
-                console.log("PLAYER WINS");
-                playerScore++;
-                break;
+                return 1;
         }
     }
 
@@ -80,13 +87,9 @@ function playRound(playerChoice, computerChoice)
         switch(computerChoice)
         {
             case "scissors":
-                console.log("COMPUTER WINS");
-                computerScore++;
-                break;
+                return -1;
             case "rock":
-                console.log("PLAYER WINS");
-                playerScore++;
-                break;
+                return 1;
         }
     }
 
@@ -94,13 +97,9 @@ function playRound(playerChoice, computerChoice)
         switch(computerChoice)
         {
             case "paper":
-                console.log("COMPUTER WINS");
-                computerScore++;
-                break;
+                return -1;
             case "scissors":
-                console.log("PLAYER WINS");
-                playerScore++;
-                break;
+                return 1;
         }
     }
 }
