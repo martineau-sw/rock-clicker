@@ -4,26 +4,14 @@ function getComputerChoice()
 }
 
 function getPlayerChoice() {
-    const choice = prompt("Rock, paper, or scissors?");
-
-    switch(choice.toLowerCase().charAt(0))
-    {
-        case "r":
-            return 0;
-        case "p":
-            return 1;
-        case "s":
-            return 2;
-        default:
-            getPlayerChoice()
-    }
 }
 
 let playerScore = 0;
 let computerScore = 0;
 
-function game() {
-    const outcome = playRound(getPlayerChoice(), getComputerChoice());
+function game(outcome) {
+
+    if(playerScore == 5 || computerScore == 5) return;
 
     if(outcome == 1) {
         console.log("Player wins round!");
@@ -37,26 +25,28 @@ function game() {
         computerScore++;
     }
 
-    if(playerScore == 3)
+    if(playerScore == 5)
     {
         console.log("Player wins game!");
     }
-    else if(computerScore == 3)
+    else if(computerScore == 5)
     {
         console.log("Computer wins game!");
     } 
     else {
         console.log(`Player: ${playerScore}\nComputer: ${computerScore}`)
-        game();   
     }
 }
 
 function playRound(playerChoice, computerChoice)
 {
+    if(playerScore == 5 || computerScore == 5) return;
+
     outcome = playerChoice - computerChoice;
 
     console.log(`Player: ${convertToString(playerChoice)}\nComputer: ${convertToString(computerChoice)}`);
     console.log(outcome);
+    
     if(outcome == 0) {
         return 0;
     }
@@ -80,4 +70,19 @@ function convertToString(index) {
     }
 }
 
-game();
+const rockChoice = document.querySelector('.rock');
+const paperChoice = document.querySelector('.paper');
+const scissorsChoice = document.querySelector('.scissors');
+
+rockChoice.addEventListener('click', () => {
+    game(playRound(0, getComputerChoice()));
+});
+
+paperChoice.addEventListener('click', () => {
+    game(playRound(1, getComputerChoice()));
+});
+
+scissorsChoice.addEventListener('click', () => {
+    game(playRound(2, getComputerChoice()));
+});
+
