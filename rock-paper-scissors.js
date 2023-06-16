@@ -28,16 +28,6 @@ function rock() {
     trackScore(playRound(0, getComputerChoice()));
 }
 
-function paper() {
-    if(checkScore()) return; 
-    trackScore(playRound(1, getComputerChoice()));
-}
-
-function scissors() {
-    if(checkScore()) return; 
-    trackScore(playRound(2, getComputerChoice()));
-}
-
 function checkScore()  {
     if(playerScore == 5 || computerScore == 5) 
     {
@@ -57,8 +47,6 @@ function checkScore()  {
         }
 
         rockChoice.removeEventListener('click', rock);
-        paperChoice.removeEventListener('click', paper);
-        scissorsChoice.removeEventListener('click', scissors);
         return true;
     }
     return false;
@@ -107,8 +95,6 @@ function convertToEmoji(index) {
 }
 
 const rockChoice = document.querySelector('.rock');
-const paperChoice = document.querySelector('.paper');
-const scissorsChoice = document.querySelector('.scissors');
 
 const player = document.querySelector('.player');
 const contest = document.querySelector('.contest');
@@ -127,8 +113,6 @@ player.appendChild(playerScoreDisplay);
 computer.appendChild(computerScoreDisplay);
 
 rockChoice.addEventListener('click', rock);
-paperChoice.addEventListener('click', paper);
-scissorsChoice.addEventListener('click', scissors);
 
 
 
