@@ -1,0 +1,79 @@
+body {
+
+    margin: 0px
+}
+
+.content {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: center;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 auto;
+    font-size: 4vw;
+}
+
+
+.buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    font-size: 20vw;
+    height: auto;
+    width: 50%;
+    border: transparent;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    flex: 0 1 100px;
+}
+
+.score {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.player,
+ .computer {
+    font-size: 7vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
+.score div h3 {
+    margin: 0;
+}
+
+.contest {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 0 1 auto;
+}
+
+.contest div {
+    font-size: 10vw;
+}
+
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: darksalmon;
+    padding: 50px
+}

@@ -14,27 +14,24 @@ function game(outcome) {
     if(playerScore == 5 || computerScore == 5) return;
 
     if(outcome == 1) {
-        outcomeDiv.textContent = "Player wins round!";
         playerScore++;
     }
     else if(outcome == 0) {
-        outcomeDiv.textContent = "It's a tie!";
     }
     else {
-        outcomeDiv.textContent = "Computer wins round!";
         computerScore++;
     }
 
+    playerScoreDisplay.textContent = playerScore.toString();
+    computerScoreDisplay.textContent = computerScore.toString();
+
     if(playerScore == 5)
     {
-        outcomeDiv.textContent = ("Player wins game!");
     }
     else if(computerScore == 5)
     {
-        outcomeDiv.textContent = "Computer wins game!";
     } 
     else {
-        outcomeDiv.textContent = (`Player: ${playerScore}\nComputer: ${computerScore}`)
     }
 }
 
@@ -42,9 +39,10 @@ function playRound(playerChoice, computerChoice)
 {
     if(playerScore == 5 || computerScore == 5) return;
 
-    outcome = playerChoice - computerChoice;
+    playerHand.textContent = convertToEmoji(playerChoice);
+    computerHand.textContent = convertToEmoji(computerChoice);
 
-    playDiv.textContent = (`Player: ${convertToString(playerChoice)}\nComputer: ${convertToString(computerChoice)}`);
+    outcome = playerChoice - computerChoice;
     
     if(outcome == 0) {
         return 0;
@@ -69,21 +67,37 @@ function convertToString(index) {
     }
 }
 
+function convertToEmoji(index) {
+    switch(index)
+    {
+        case 0:
+            return "🪨";
+        case 1:
+            return "📃";
+        case 2:
+            return "✂️";
+    }
+}
+
 const rockChoice = document.querySelector('.rock');
 const paperChoice = document.querySelector('.paper');
 const scissorsChoice = document.querySelector('.scissors');
 
-const logDiv = document.createElement('div');
+const player = document.querySelector('.player');
+const contest = document.querySelector('.contest');
+const computer = document.querySelector('.computer');
 
-const scoreDiv = document.createElement('div');
-const outcomeDiv = document.createElement('div');
-const playDiv = document.createElement('div');
+const playerScoreDisplay = document.createElement('div');
+const computerScoreDisplay = document.createElement('div');
 
-logDiv.appendChild(scoreDiv);
-logDiv.appendChild(outcomeDiv);
-logDiv.appendChild(playDiv);
+const playerHand = contest.firstElementChild;
+const computerHand = contest.lastElementChild;
 
-document.body.appendChild(logDiv);
+playerScoreDisplay.textContent = "0";
+computerScoreDisplay.textContent = "0";
+
+player.appendChild(playerScoreDisplay);
+computer.appendChild(computerScoreDisplay);
 
 rockChoice.addEventListener('click', () => {
     game(playRound(0, getComputerChoice()));
@@ -96,4 +110,6 @@ paperChoice.addEventListener('click', () => {
 scissorsChoice.addEventListener('click', () => {
     game(playRound(2, getComputerChoice()));
 });
+
+
 
