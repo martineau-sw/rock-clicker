@@ -14,27 +14,27 @@ function game(outcome) {
     if(playerScore == 5 || computerScore == 5) return;
 
     if(outcome == 1) {
-        console.log("Player wins round!");
+        outcomeDiv.textContent = "Player wins round!";
         playerScore++;
     }
     else if(outcome == 0) {
-        console.log("It's a tie!");
+        outcomeDiv.textContent = "It's a tie!";
     }
     else {
-        console.log("Computer wins round!");
+        outcomeDiv.textContent = "Computer wins round!";
         computerScore++;
     }
 
     if(playerScore == 5)
     {
-        console.log("Player wins game!");
+        outcomeDiv.textContent = ("Player wins game!");
     }
     else if(computerScore == 5)
     {
-        console.log("Computer wins game!");
+        outcomeDiv.textContent = "Computer wins game!";
     } 
     else {
-        console.log(`Player: ${playerScore}\nComputer: ${computerScore}`)
+        outcomeDiv.textContent = (`Player: ${playerScore}\nComputer: ${computerScore}`)
     }
 }
 
@@ -44,8 +44,7 @@ function playRound(playerChoice, computerChoice)
 
     outcome = playerChoice - computerChoice;
 
-    console.log(`Player: ${convertToString(playerChoice)}\nComputer: ${convertToString(computerChoice)}`);
-    console.log(outcome);
+    playDiv.textContent = (`Player: ${convertToString(playerChoice)}\nComputer: ${convertToString(computerChoice)}`);
     
     if(outcome == 0) {
         return 0;
@@ -73,6 +72,18 @@ function convertToString(index) {
 const rockChoice = document.querySelector('.rock');
 const paperChoice = document.querySelector('.paper');
 const scissorsChoice = document.querySelector('.scissors');
+
+const logDiv = document.createElement('div');
+
+const scoreDiv = document.createElement('div');
+const outcomeDiv = document.createElement('div');
+const playDiv = document.createElement('div');
+
+logDiv.appendChild(scoreDiv);
+logDiv.appendChild(outcomeDiv);
+logDiv.appendChild(playDiv);
+
+document.body.appendChild(logDiv);
 
 rockChoice.addEventListener('click', () => {
     game(playRound(0, getComputerChoice()));
