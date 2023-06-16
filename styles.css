@@ -11,6 +11,7 @@ body {
     justify-content: space-between;
     align-items: stretch;
     align-content: center;
+    gap: 5vh;
 }
 
 .header {
@@ -18,12 +19,15 @@ body {
     justify-content: center;
     flex: 1 1 auto;
     font-size: 4vw;
+
 }
 
 
 .buttons {
     display: flex;
     justify-content: space-evenly;
+    padding: 10vh 0;
+    flex: 0 1 auto;
 }
 
 button {
@@ -40,13 +44,14 @@ button {
 .score {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    flex: 0 1 auto;
+    background-color: lightpink;
+    color: white
 }
 
 .player,
  .computer {
-    font-size: 7vw;
+    font-size: 6vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,6 +79,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: darksalmon;
+    background-color: lightpink;
+    color:white;
     padding: 50px
 }
