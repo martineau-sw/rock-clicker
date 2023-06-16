@@ -23,9 +23,19 @@ function trackScore(outcome) {
     computerScoreDisplay.textContent = computerScore.toString();
 }
 
-function game() {
+function rock() {
     if(checkScore()) return; 
     trackScore(playRound(0, getComputerChoice()));
+}
+
+function paper() {
+    if(checkScore()) return; 
+    trackScore(playRound(1, getComputerChoice()));
+}
+
+function scissors() {
+    if(checkScore()) return; 
+    trackScore(playRound(2, getComputerChoice()));
 }
 
 function checkScore()  {
@@ -46,9 +56,9 @@ function checkScore()  {
             
         }
 
-        rockChoice.removeEventListener('click', game);
-        paperChoice.removeEventListener('click', game);
-        scissorsChoice.removeEventListener('click', game);
+        rockChoice.removeEventListener('click', rock);
+        paperChoice.removeEventListener('click', paper);
+        scissorsChoice.removeEventListener('click', scissors);
         return true;
     }
     return false;
@@ -116,9 +126,9 @@ computerScoreDisplay.textContent = "0";
 player.appendChild(playerScoreDisplay);
 computer.appendChild(computerScoreDisplay);
 
-rockChoice.addEventListener('click', game);
-paperChoice.addEventListener('click', game);
-scissorsChoice.addEventListener('click', game);
+rockChoice.addEventListener('click', rock);
+paperChoice.addEventListener('click', paper);
+scissorsChoice.addEventListener('click', scissors);
 
 
 
