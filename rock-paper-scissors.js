@@ -34,17 +34,11 @@ function checkScore()  {
         const player = document.querySelector('.player');
         const computer = document.querySelector('.computer');
         const score = document.querySelector('.contest');
-        if(playerScore == 5)
-        {
-            score.remove();
-            computer.remove();
-            player.lastElementChild.textContent = "WINS!";
-        } else if (computerScore == 5) {
-            score.remove();
-            player.remove();
-            computer.lastElementChild.textContent = "WINS!";
-            
-        }
+        score.remove();
+        computer.remove();
+
+        player.firstElementChild.textContent = playerScore == 5 ? "YOU ROCK!" : "YOU DON'T ROCK!";
+        
 
         rockChoice.removeEventListener('click', rock);
         return true;
