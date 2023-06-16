@@ -1,5 +1,4 @@
 body {
-
     margin: 0px
 }
 
@@ -12,6 +11,7 @@ body {
     align-items: stretch;
     align-content: center;
     gap: 5vh;
+    min-height: 100vh;
 }
 
 .header {
@@ -27,7 +27,7 @@ body {
     display: flex;
     justify-content: space-evenly;
     padding: 10vh 0;
-    flex: 0 1 auto;
+    flex: 1 1 auto;
 }
 
 button {
@@ -75,11 +75,12 @@ button {
 }
 
 
-.footer {
+footer {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: lightpink;
     color:white;
+    margin-top: auto;
     padding: 50px
 }
