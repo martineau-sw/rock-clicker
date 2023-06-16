@@ -45,7 +45,7 @@ button {
     display: flex;
     justify-content: center;
     flex: 0 1 auto;
-    background-color: lightpink;
+    background-color: gray;
     color: white
 }
 
@@ -79,7 +79,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: lightpink;
+    background-color: gray;
     color:white;
     margin-top: auto;
     padding: 50px
