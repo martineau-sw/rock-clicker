@@ -9,10 +9,7 @@ function getPlayerChoice() {
 let playerScore = 0;
 let computerScore = 0;
 
-function game(outcome) {
-
-    if(playerScore == 5 || computerScore == 5) return;
-
+function trackScore(outcome) {
     if(outcome == 1) {
         playerScore++;
     }
@@ -24,21 +21,41 @@ function game(outcome) {
 
     playerScoreDisplay.textContent = playerScore.toString();
     computerScoreDisplay.textContent = computerScore.toString();
+}
 
-    if(playerScore == 5)
+function game() {
+    if(checkScore()) return; 
+    trackScore(playRound(0, getComputerChoice()));
+}
+
+function checkScore()  {
+    if(playerScore == 5 || computerScore == 5) 
     {
+        const player = document.querySelector('.player');
+        const computer = document.querySelector('.computer');
+        const score = document.querySelector('.contest');
+        if(playerScore == 5)
+        {
+            score.remove();
+            computer.remove();
+            player.lastElementChild.textContent = "WINS!";
+        } else if (computerScore == 5) {
+            score.remove();
+            player.remove();
+            computer.lastElementChild.textContent = "WINS!";
+            
+        }
+
+        rockChoice.removeEventListener('click', game);
+        paperChoice.removeEventListener('click', game);
+        scissorsChoice.removeEventListener('click', game);
+        return true;
     }
-    else if(computerScore == 5)
-    {
-    } 
-    else {
-    }
+    return false;
 }
 
 function playRound(playerChoice, computerChoice)
 {
-    if(playerScore == 5 || computerScore == 5) return;
-
     playerHand.textContent = convertToEmoji(playerChoice);
     computerHand.textContent = convertToEmoji(computerChoice);
 
@@ -99,17 +116,9 @@ computerScoreDisplay.textContent = "0";
 player.appendChild(playerScoreDisplay);
 computer.appendChild(computerScoreDisplay);
 
-rockChoice.addEventListener('click', () => {
-    game(playRound(0, getComputerChoice()));
-});
-
-paperChoice.addEventListener('click', () => {
-    game(playRound(1, getComputerChoice()));
-});
-
-scissorsChoice.addEventListener('click', () => {
-    game(playRound(2, getComputerChoice()));
-});
+rockChoice.addEventListener('click', game);
+paperChoice.addEventListener('click', game);
+scissorsChoice.addEventListener('click', game);
 
 
 
