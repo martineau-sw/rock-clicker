@@ -36,6 +36,7 @@ function checkScore()  {
         const score = document.querySelector('.contest');
         score.remove();
         computer.remove();
+        player.lastElementChild.remove();
 
         player.firstElementChild.textContent = playerScore == 5 ? "YOU ROCK!" : "YOU DON'T ROCK!";
         
